@@ -1,5 +1,5 @@
 const modal = document.querySelector('.modal')
-const modalContent = document.querySelector('#content-modal')
+const modalContent = document.querySelector('#modal')
 const body = document.body 
 
 
@@ -7,11 +7,11 @@ function ModalWindow(boolean) {
     if (boolean) {
         modal.style.display = 'block'
         body.style.overflow = 'hidden'
-        modal.style.animation = 'modalAnimateOpen .4s'
+        modalContent.style.animation = 'modalAnimateOpen .4s'
 
     } else {
         body.style.overflow = ''
-        modal.style.animation = 'modalAnimateClose .4s'
+        modalContent.style.animation = 'modalAnimateClose .4s'
         setTimeout(() => {
             modal.style.display = ''
         }, 400)

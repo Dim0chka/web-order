@@ -59,6 +59,10 @@ body, html {
     font-size: 18px;
     color: $primary;
     font-weight: 400;
+
+    scroll-behavior: smooth;
+    scroll-margin-top: 125px;
+    scroll-padding-top: 125px;
 }
 
 a {
@@ -171,7 +175,11 @@ a {
     z-index : 50;
 
 
-    background-color: none;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    @media (min-width: 1280px) {
+        display: none;
+    }
 
 
     .modal-content {
@@ -296,11 +304,13 @@ a {
 
 
             .btn {
+                display: inline-block;
                 outline: none;
                 border: none;
                 border-radius: 5px;
                 padding: 16px 77px;
                 background: #00B558;
+                transition: .4s;
                 filter: drop-shadow(0px 6px 12px #BFFFDE);
 
                 span {
@@ -308,6 +318,11 @@ a {
                     font-size: 20px;
                     line-height: 24px;
                     font-weight: 700;
+                }
+
+                &:hover {
+                    background: #00813e;
+                    filter: drop-shadow(0px 6px 12px #BFFFDE);
                 }
             }
         }
@@ -484,10 +499,13 @@ a {
                 display: flex;
                 gap: 24px;
                 align-items: center;
+                max-width: 50%;
+                width: 100%;
                 
                 @media (max-width: 1280px) {
                     gap: 14px;
-                }
+                    max-width: 100%;
+                }   
 
                 span {
                     color: #FFF;
@@ -509,8 +527,44 @@ a {
 
                     @media (max-width: 1280px) {
                         font-size: 20px;
+                        line-height: normal;
                     }
                 }
+            }
+        }
+
+        .ben1 {
+            order: 1;
+            @media (max-width: 1280px) {
+                order:unset;
+            }
+        }
+
+        .ben2 {
+            order: 3;
+            @media (max-width: 1280px) {
+                order:unset;
+            }
+        }
+
+        .ben3 {
+            order: 5;
+            @media (max-width: 1280px) {
+                order:unset;
+            }
+        }
+
+        .ben4 {
+            order: 2;
+            @media (max-width: 1280px) {
+                order:unset;
+            }
+        }
+
+        .ben5 {
+            order: 4;
+             @media (max-width: 1280px) {
+                order:unset;
             }
         }
     }
@@ -844,6 +898,7 @@ a {
                     }
 
                     button {
+                        cursor: pointer;
                         outline: none;
                         border: none;
                         background-color: inherit;
@@ -851,10 +906,23 @@ a {
                         align-items: center;
                         gap: 25px;
 
+                        .door-icon {
+                            fill: black;
+                            transition: .4s;
+                        }
+
+                        &:hover {
+                            .door-icon, span {
+                                fill: #00B558;
+                                color: #00B558;
+                            }
+                        }
+
                         @media (max-width: 1280px) {   
                             gap: 15px; 
                         }  
                         span {
+                            transition: .4s;
                             font-size: 48px;
                             color: #4D4141;
                             font-weight: 600;
@@ -981,24 +1049,96 @@ a {
     }    
 }
 
+.footer {
+    background-color: #2F2F2F;
+    padding-top: 34px;
+    padding-bottom: 78px;
+
+    @media (max-width: 1280px) {   
+       padding-top: 10px;
+       padding-bottom: 43px;
+    }   
+
+    .footer-inner {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px ; 
+
+            @media (max-width: 1280px) {   
+                order: 2;
+                gap: 10px;
+            }   
+    
+            a {
+                color: $bg;
+                font-size: 18px;
+                font-weight: 600;
+                transition: .4s;
+                line-height: 24px;
+                
+                @media (max-width: 1280px) {   
+                    font-size: 12px;
+                 }   
+
+                &:hover {
+                    color: $hover;
+                }
+            }
+        }
+    
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @media (max-width: 1280px) {   
+                order: 1;
+                gap: 10px;
+            }   
+
+            span {
+                color: $bg;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 24px;
+
+                @media (max-width: 1280px) {   
+                    font-size: 12px;
+                 }   
+            }
+        }
+    }
+}
 
 
 @keyframes modalAnimateOpen {
     from {
         opacity: 0;
+        transform: translateX(150%);
     }
 
     to {
         opacity: 1;
+        transform: translateX(0);
     }
 }
 
 @keyframes modalAnimateClose {
     from {
         opacity: 1;
+        transform: translateY(0);
     }
 
     to {
         opacity: 0;
+        transform: translateX(150%);
     }
 }
